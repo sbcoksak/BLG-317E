@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %} Delete Multiple {% endblock %}
+{% block content %}
+    <h1 class="title has-text-centered has-text-white"></h1>
+    <div class="column"><h1 class="title has-text-white">Projects</h1></div>
+
+    {% if projects %}
+	<form action = "" method="post" name="project_list">
+		<table class="table is-striped is-fullwidth">
+			
+			{% for row in projects %}
+        <tr>
+			<div class="columns">
+		<td><div class="column"><a href="{{ url_for('project_page', project_key=row.project_id) }}">{{row.project_name}}</a></div></td>
+		<td><div class="column">{{row.year}}</div></td>
+		<td><div class="column">
+			<label class="checkbox">
+				<input type="checkbox" name="project_keys" value="{{ row.project_id }}"/>
+			</label></div></td>
+			</div>
+        </tr>
+			{% endfor %}
+		</table>
+		<div class="field is-grouped">
+			<div class="control">
+				<button class="button">Delete</button>
+			</div>
+		</div>
+	</form>
+    {% endif %}
+{% endblock %}

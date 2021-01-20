@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block title %}{{ Project.name }}{% endblock %}
+{% block content %}
+	<div class="column"><h1 class="title has-text-white">{{ Project.project_name }}</h1></div>
+    <table class="table" >
+      {% if Project.year %}
+      <tr>
+        <th>Year:</th>
+        <td><a href="{{ url_for('search_page', searchfor=Project.year) }}">{{Project.year}}</a></td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Project.project_description %}
+      <tr>
+        <th>Project Description:</th>
+        <td>{{ Project.project_description }}</td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Project.programming_language %}
+      <tr>
+        <th>Programming Language:</th>
+        <td><a href="{{ url_for('search_page', searchfor=Project.programming_language) }}">{{Project.programming_language}}</a></td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Project.web_framework %}
+      <tr>
+        <th>Web Framework:</th>
+        <td><a href="{{ url_for('search_page', searchfor=Project.web_framework) }}">{{Project.web_framework}}</a></td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Project.dbms %}
+      <tr>
+        <th>DBMS:</th>
+        <td><a href="{{ url_for('search_page', searchfor=Project.dbms) }}">{{Project.dbms}}</a></td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Keywords %}
+      <tr>
+        <th>Keywords:</th><td>
+		{% for keyword in Keywords %} 
+		<a href="{{ url_for('search_page', searchfor=keyword.keyword_name) }}">{{keyword.keyword_name}}</a> 
+		{% endfor %}
+		</td>
+	  </tr>
+      {% endif %}
+	  {% if Students %}
+      <tr>
+        <th>Students:</th><td>
+		{% for student in Students %}
+		<a href="{{ url_for('student_page', student_id=student.generated_student_id) }}">{{student.student_name}}</a> 		
+		{% endfor %}
+		</td>
+	  </tr>
+      {% endif %}
+	  {% if Teaching_staff %}
+      <tr>
+        <th>Teaching Staff:</th><td>
+		{% for ts in Teaching_staff %} 
+		<a href="{{ url_for('ts_page', ts_id=ts.teaching_staff_id) }}">{{ts.teaching_staff_name}}</a> 
+		{% endfor %}
+		</td>
+	  </tr>
+      {% endif %}
+    </table>
+	<form action="" method="post" name="button" value = "delete">
+		
+        <div class="column">
+          <input type="submit" name="Button" value="Update" class="button">
+          <input type="submit" name="Button" value="Delete" class="button">
+        </div>
+   
+	</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %} ALL PROJECTS {% endblock %}
+{% block content %}
+	<h1 class="title has-text-centered has-text-white"></h1>
+    <div class="column"><h1 class="title has-text-white">Projects</h1></div>
+{% if projects or projectsfk%}
+	<table class="">
+			<tr>
+				<div class="columns">
+				<td><div class="column">Project Name</div></td>
+				<td><div class="column">Year</div></td>
+				<td><div class="column">Programming Language</div></td>
+				<td><div class="column">Web Framework</div></td>
+				<td><div class="column">DBMS</div></td>
+				<td><div class="column">Keywords</div></td>
+				</div>
+		</tr>
+{% endif %}	
+{% if projects %}
+	{% for i in projects %}
+        <tr>
+			<div class="columns">
+		<td><div class="column"><a href="{{ url_for('project_page', project_key=i.project_id) }}">{{i.project_name}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.year) }}">{{i.year}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.programming_language) }}">{{i.programming_language}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.web_framework) }}">{{i.web_framework}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.dbms) }}">{{i.dbms}}</a></div></td>
+		<td><div class="column">
+		{% for j in keywords %}
+			{% if i.project_id == j.project_id %}
+				<a href="{{ url_for('search_page', searchfor=j.keyword_name) }}">{{j.keyword_name}}</a> 
+			{% endif %}	
+		{% endfor %}	
+		</div>
+		</td>
+			</div>
+        </tr>
+    {% endfor %}
+{% endif %}
+{% if projectsfk %}
+	{% for i in projectsfk %}
+        <tr>
+			<div class="columns">
+			<td><div class="column"><a href="{{ url_for('project_page', project_key=i.project_id) }}">{{i.project_name}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.year) }}">{{i.year}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.programming_language) }}">{{i.programming_language}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.web_framework) }}">{{i.web_framework}}</a></div></td>
+		<td><div class="column"><a href="{{ url_for('search_page', searchfor=i.dbms) }}">{{i.dbms}}</a></div></td>
+		<td><div class="column">
+		{% for j in keywords %}
+			{% if i.project_id == j.project_id %}
+				<a href="{{ url_for('search_page', searchfor=j.keyword_name) }}">{{j.keyword_name}}</a> 
+			{% endif %}	
+		{% endfor %}	
+		</div>
+		</td>
+			</div>
+        </tr>
+    {% endfor %}
+
+{% endif %}
+</table>
+{% endblock %}
+    
+
+

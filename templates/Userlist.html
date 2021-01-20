@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %} ALL USERS {% endblock %}
+{% block content %}
+	<h1 class="title has-text-centered has-text-white"></h1>
+{% if tss %}
+	<div class="column"><h1 class="title has-text-white">Teaching Staffs</h1></div>
+	<table class="">
+			<tr>
+				<div class="columns">
+				<td><div class="column">Teaching Staff Name</div></td>
+				<td><div class="column">Itu Mail Address</div></td>
+				</div>
+		</tr>
+	{% for ts in tss %}
+        <tr>
+			<div class="columns">
+			
+			<td><div class="column">{% if ts.teaching_staff_name %}
+			<a href="{{ url_for('ts_page', ts_id=ts.teaching_staff_id) }}">{{ts.teaching_staff_name}}</a>
+			{% endif %}</div></td>
+			
+			<td><div class="column">
+			{% if ts.itu_mail_address %}
+			{{ts.itu_mail_address}}{% endif %}</div></td>
+			</div>
+        </tr>
+    {% endfor %}
+	</table>
+{% endif %}
+   
+{% if students %}
+	 <div class="column"><h1 class="title has-text-white">Students</h1></div>
+	<table class="">
+			<tr>
+				<div class="columns">
+				<td><div class="column">Student Name</div></td>
+				<td><div class="column">Itu Student Id</div></td>
+				<td><div class="column">Itu Mail Address</div></td>
+				</div>
+		</tr>
+	{% for student in students %}
+        <tr>
+			<div class="columns">
+		<td><div class="column">{% if student.student_name %}<a href="{{ url_for('student_page', student_id=student.generated_student_id) }}">{{student.student_name}}</a>{% endif %}</div></td>
+		<td><div class="column">{% if student.itu_student_id %}{{student.itu_student_id}}{% endif %}</div></td>
+		<td><div class="column">{% if student.itu_mail_address %}{{student.itu_mail_address}}{% endif %}</div></td>
+		</td>
+			</div>
+        </tr>
+    {% endfor %}
+	</table>
+{% endif %}
+
+
+{% endblock %}

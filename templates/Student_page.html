@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}{{ Student.name }}{% endblock %}
+{% block content %}
+	<div class="column"><h1 class="title has-text-white">{{ Student.student_name }}</h1></div>
+    <table class="table" >
+      {% if Student.itu_student_id %}
+      <tr>
+        <th>ITU Id:</th>
+        <td>{{Student.itu_student_id}}</td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Student.itu_mail_address %}
+      <tr>
+        <th>ITU Mail:</th>
+        <td>{{ Student.itu_mail_address }}</td>
+      </tr>
+      {% endif %}
+	  
+	  {% if Projects %}
+      <tr>
+        <th>Projects:</th><td>
+		{% for project in Projects %} 
+		<a href="{{ url_for('project_page', project_key=project.project_id) }}">{{project.project_name}}</a>,
+		{% endfor %}
+		</td>
+	  </tr>
+      {% endif %}
+	  
+    </table>
+	<form action="" method="post" name="button" value = "delete">
+		
+        <div class="column">
+          <input type="submit" name="Button" value="Update" class="button">
+          <input type="submit" name="Button" value="Delete" class="button">
+        </div>
+   
+	</form>
+{% endblock %}

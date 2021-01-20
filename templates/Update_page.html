@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block title %}Update Project{% endblock %}
+{% block content %}
+    <div class="column"><h1 class="title has-text-white">Update Project</h1></div>
+    <form action="" method="post" name="add_p">
+      <div class="field">
+        <label for="name" class="column">Name:</label>
+        <div class="column is-3 ">
+          <input type="text" name="P_name" class="input" required="required" value="{{ values['P_name'] }}"/>
+        </div>
+		{% if 'name' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['name'] }}
+        </p>
+        {% endif %}
+      </div>
+
+      <div class="field">
+        <label for="year" class="column">Year:</label>
+        <div class="column is-1">
+          <input type="number" name="year" class="input" min="{{ min_year }}" max="{{ max_year }}"value="{{ values['year'] }}"/>
+        </div>
+		{% if 'year' in values.errors %}
+        <p class="help has-background-warning">
+            {{ values.errors['year'] }}
+        </p>
+        {% endif %}
+      </div>
+
+		<div class="field ">
+			<label for="description" class="column">Project Description:</label>
+			<div class="column">
+				<input type="text" name="P_desc" class="input" value="{{ values['P_desc'] }}"/>
+			</div>
+		</div>
+		
+		<div class="field">
+			<label for="progL" class="column has-text-white">Programming Language: </label>
+			<div class="column is-1">
+				<input type="text" name="progL" class="input" value="{{ values['progL'] }}"/>
+			</div>
+		</div>
+		
+		<div class="field">
+			<label for="wf" class="column">Web Framework:</label>
+			<div class="column is-1">
+				<input type="text" name="wf" class="input" value="{{ values['wf'] }}"/>
+			</div>
+		</div>
+		
+		<div class="field">
+			<label for="dbms" class="column">Database Management System:</label>
+			<div class="column is-1">
+				<input type="text" name="dbms" class="input" value="{{ values['dbms'] }}"/>
+			</div>
+		</div>
+
+		<div class="field">
+			<label for="dbms" class="column">Keywords:</label>
+			<div class="column is-4">
+				<input type="text" name="kw" class="input" value="{{ values['kw'] }}"/>
+			</div>
+		</div>
+		
+		<div class="field">
+			<label for="Student" class="column">Students:</label>
+			<div class="column is-4">
+				<input type="text" name="std" class="input" value="{{ values['std'] }}"/>
+			</div>
+		</div>
+		
+		<div class="field">
+			<label for="Teaching_staff" class="column">Teaching Staff:</label>
+			<div class="column is-4">
+				<input type="text" name="ts" class="input" value="{{ values['ts'] }}"/>
+			</div>
+		</div>
+		
+		
+        <div class="field is-grouped">
+			<div class="column">
+				<button class="button is-white is-small">Update</button>
+        </div>
+      </div>
+    </form>
+{% endblock %}

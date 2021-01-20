@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'mypage.css')}}">
+		
+	</head>
+	<body class= "has-background-dark has-text-white">
+		<header>
+			<h1 class="title has-text-centered has-text-white" >BLG317E-DB</h1>
+			<nav class= "columns has-background-dark has-text-white">
+					<div class="column  has-background-dark has-text-white center" disabled></div>
+					<div class="column  has-background-dark has-text-white center" disabled></div>
+					<div class="column  has-background-dark has-text-white center" disabled ></div>
+					<a class="column  has-background-dark has-text-white center"  href="/">Home</a>
+					<a class="column  has-background-dark has-text-white center" href="{{ url_for('projects_page') }}">Project List</a>
+					<a class="column  has-background-dark has-text-white center" href="{{ url_for('user_list') }}">User List</a>
+					<a class="column  has-background-dark has-text-white center" href="{{ url_for('addp') }}">Add Project</a>
+					<a class="column  has-background-dark has-text-white center" href="{{ url_for('addu') }}">Add User</a>
+					<a class="column  has-background-dark has-text-white center" href="{{ url_for('delete_multiple_page') }}">Delete projects</a>
+					<div class="column   has-background-dark has-text-white center" disabled ></div>
+					<div class="column   has-background-dark has-text-white center" disabled ></div>
+					<div class="column   has-background-dark has-text-white center" disabled ></div>			
+			</nav>
+		</header>
+		{% block content %}{% endblock %}
+		<footer class= "footer has-background-dark has-text-white">
+			<h2 class="subtitle is-6 has-text-centered has-text-white"> &copy 2020 SBÇ </h2>
+		</footer>
+	</body>
+</html>
